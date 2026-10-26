@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: moalif-ai
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: NODE_VERSION
+        value: "22"
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
